@@ -1,0 +1,79 @@
+@startuml
+<style>
+    footer {
+        HorizontalAlignment left
+        PaddingLeft 16
+    }
+</style>
+
+skinparam nodesep 100
+skinparam ranksep 100
+
+rectangle "THG" {
+    [TeePee]
+
+    rectangle "Customer Data Protection UI" as ui {
+        [Issue an Expired Notice]
+        ' [View history/status of retention runs]
+        ' [View status of Deletion Request]
+    }
+
+    rectangle "Customer Data Protection Service" as service {
+        [Service Contracts]
+        [Customer Management]
+        [Retention Management]
+        [Get Retention Policies]
+        [Process requests]
+        [Process responses]
+
+        database "Database" as requestTable {
+            [requests] 
+            [results] 
+            [queries]
+        }
+        queue "Queues" as queue {
+            [IN]
+            [OUT]
+        }
+    }
+
+    rectangle "Sub system" {
+        [Erasure Processor]
+        [Logging]
+        database "Existing datasource" as existingDatasource {
+        }
+    }
+}
+
+actor ConfigAdmin as "Config Admin"
+actor DataRetentionOfficer as "Data Retention Officer"
+[Issue an Expired Notice] -down-> [Customer Management]
+' [View history/status of retention runs] -down-> [Customer Management]
+' [View status of Deletion Request] -down-> [Retention Management]
+
+' CDP Service
+[Get Retention Policies] -up-> [Service Contracts]
+[Get Retention Policies] -right-> [requests]
+[Get Retention Policies] -down-> [IN]
+[OUT] -up-> [Process responses]
+[Process responses] -down-> [results]
+[Retention Management] -down-> [results]
+[Service Contracts] -left-> [TeePee]
+[Service Contracts] -down-> [Process requests]
+[Process requests] -down-> [OUT]
+[Process requests] --> [requests]
+[IN] -up-> [Process responses]
+[Customer Management] -down-> [requests]
+ConfigAdmin -down-> [TeePee]
+
+' Sub system
+[Erasure Processor] -right-> [Get Retention Policies]
+
+' Actors
+DataRetentionOfficer -down-> [Issue an Expired Notice]
+
+footer 
+ (1) this is the footer
+end footer
+
+@enduml

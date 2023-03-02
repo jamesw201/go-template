@@ -1,0 +1,57 @@
+@startuml
+' https://plantuml.com/color
+
+skinparam SequenceGroupBodyBackgroundColor #FFFFFF90
+
+actor Customer
+
+' box "CDP Application" #Lavender
+box "CDP Application" #LightCyan
+    participant RequestManager
+    participant RequestsDB
+    ' participant QueryDB
+    participant CDP_API
+end box
+
+box "Event queues" #PaleGreen
+    participant RequestsQueue
+    participant ResultsQueue
+end box
+
+' box "Sub system" #LightSkyBlue
+box "Sub system" #LightGoldenRodYellow
+' box "Sub system" #Thistle
+    participant ErasureExe
+    participant SubSystemDB
+end box
+
+' box "Other" #LightGreen
+'     participant Other
+' end box
+
+Customer -> CDP_API : request erasure
+CDP_API -> RequestManager : request erasure
+
+group inbound
+    RequestManager -> CDP_API : get sub systems
+    RequestManager -> CDP_API : get policies
+    RequestManager -> RequestsDB : store request
+    RequestManager -> RequestsQueue : send request
+end
+
+group subsystem
+    RequestsQueue -> ErasureExe : msg triggers
+    ' ErasureExe -> CDP_API : gets query
+    ' CDP_API -> QueryDB : queries query
+    ' QueryDB -> CDP_API : returns query
+    ErasureExe -> SubSystemDB : queries sub system
+    ErasureExe -> SubSystemDB : deletes data
+    ErasureExe -> ResultsQueue : send result
+end
+
+group retry 
+    ResultsQueue -> RequestManager : msg triggers
+    RequestManager -> RequestsDB : store retry request
+    RequestManager -> RequestsQueue : send retry request
+end
+@enduml

@@ -1,0 +1,46 @@
+@startmindmap
+*[#Orange] work
+ *[#lightgreen] Design Reviews
+  *[#LightSlateGrey] write up plan for Design Review process
+  *[#LightSlateGrey] gantt chart
+  *[#LightSlateGrey] share plan with PE group to get feedback before sending to Nik 
+  *[#LightSlateGrey] share plan with Nik
+  *[#lightblue] catch up with Andrew on next steps
+ *[#lightgreen] Preview Environments 
+  *[#OrangeRed] solve issues
+  *[#lightblue] setup test to prove git switch is duplicating name
+ *[#lightgreen] Data Deletion project
+  *[#OrangeRed] detailed design 
+   *[#LightSlateGray] create document
+   *[#LightSlateGray] sequence diagrams
+   *[#LightGoldenRodYellow] component diagrams
+   *[#LightGoldenRodYellow] swagger spec
+   *[#LightGoldenRodYellow] async queues spec
+   *[#LightGoldenRodYellow] gantt chart
+  *[#LightSlateGray] setup meeting with Product Manager/BA
+ *[#lightgreen] Critical Paths
+  *[#OrangeRed] write up a summary of the Rocinante cache settings
+  *[#lightblue] setup next Degradation tests
+  *[#lightblue] read through slow service analysis document Bradley rowe sent
+  *[#lightblue] set up follow up call with Bradley rowe to go over slow payments issue
+  *[#lightblue] read PIRs
+ *[#lightgreen] Fastly automated rollout
+  *[#lightblue] create HLD
+  *[#lightblue] create swagger spec
+  *[#lightblue] prototype the API
+  *[#lightblue] prototype the DB
+  *[#lightblue] prototype the Terraform
+ *[#lightgreen] Automated testing
+  *[#OrangeRed] create e2e tests to catch the Subs issue
+  *[#LightSlateGrey] fix the cookies issue in e2e
+
+' Legend colours need to be updated manually :-(
+legend
+|<back:LightGray><b>Not Started.</b></back>|
+|<back:SkyBlue><b>In Progress.</b></back>|
+|<back:LightSlateGrey><i>Completed     .</i></back>|
+|<back:OrangeRed><b>Urgent        .</b></back>|
+|<back:Gold><b>Delegated   .</b></back>|
+|<back:YellowGreen><b>Branch        .</b></back>|
+endlegend
+@endmindmap

@@ -6,6 +6,9 @@ ${{ values.description }}
 
 Start writing your documentation by adding more markdown (.md) files to this folder (/docs) or replace the content in this file.
 
+![file](diagrams/out/cpd_seq.svg)
+![file](diagrams/out/cpd_gantt.svg)
+
 ## Table of Contents
 
 The Table of Contents on the right is generated automatically based on the hierarchy

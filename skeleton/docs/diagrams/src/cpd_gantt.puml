@@ -1,0 +1,99 @@
+@startgantt
+<style>
+ganttDiagram {
+    unstartedTask {
+        FontName Helvetica
+        FontColor Black
+        FontSize 12
+        FontStyle bold
+        BackGroundColor DeepSkyBlue
+        LineColor DeepSkyBlue
+    }
+    task {
+        FontName Helvetica
+        FontColor Black
+        FontSize 12
+        FontStyle bold
+        BackGroundColor DeepSkyBlue
+        LineColor DeepSkyBlue
+    }
+    milestone {
+        FontColor black
+        FontSize 12
+        FontStyle bold
+        BackGroundColor yellow
+        LineColor FireBrick
+    }
+    note {
+        FontColor DarkGreen
+        FontSize 10
+        LineColor OrangeRed
+    }
+    arrow {
+        FontName Helvetica
+        FontColor red
+        FontSize 18
+        FontStyle bold
+        BackGroundColor GreenYellow
+        LineColor blue
+        LineStyle 8.0;13.0
+        LineThickness 3.0
+    }
+    separator {
+        BackgroundColor Teal
+        LineStyle 8.0;3.0
+        LineColor Gray
+        LineThickness 1.0
+        FontSize 16
+        FontStyle bold
+        FontColor White
+        Margin 5
+        Padding 6
+    }
+    timeline {
+        BackgroundColor Snow
+    }
+    closed {
+        ' BackgroundColor OldLace
+        FontColor red
+    }
+}
+</style>
+projectscale weekly
+Project starts the 13th of February 2023
+saturday are closed
+sunday are closed
+' 2023/02/13 to 2023/02/20 are colored in grey
+
+-- Preparation Stage --
+
+[Document Design review definition] as [define-proj] lasts 2 days and is 0% completed
+[Define areas of experise] as [define-aob] lasts 2 days and is 0% completed
+[Define checklist] as [define-artefacts] lasts 4 days and is 0% completed
+[Develop artefacts] as [develop-artefacts] lasts 4 days and is 0% completed
+[Define review process] as [define-process] lasts 4 days and is 0% completed
+[Define KPIs] as [define-kpi] lasts 2 days and is 0% completed
+[Request for pioneers] as [request-pioneers] lasts 2 days and is 0% completed
+[Onboard 2 pioneers] as [onboard-pioneers] lasts 2 days and starts at [request-pioneers]'s end and is 0% completed
+[Review pioneer projects] as [review-pioneer-projects] lasts 14 days and starts at [onboard-pioneers]'s end and is 0% completed
+[Prep stage feedback] as [prep-feedback] lasts 3 days and starts after [review-pioneer-projects]'s end and is 0% completed
+[Prep Stage Complete] as [design-complete] happens at [prep-feedback]'s end
+
+-- Development Stage -- 
+
+[Request for projects] as [request-projects] lasts 2 days and starts at [prep-feedback]'s end and is 0% completed
+[Request for SMEs] as [request-sme] lasts 2 days and starts at [request-projects]'s end  and is 0% completed
+[Initiate Org] as [initiate-org] lasts 2 days and starts at [request-sme]'s end and is 0% completed
+[Train SMEs] as [train-sme] lasts 3 days and starts at [initiate-org]'s end and is 0% completed
+' [Onboard Org projects] as [onboard-projects] lasts 3 days and starts at [train-sme]'s end and is 0% completed
+[Review projects] as [review-projects] lasts 30 days and starts at [train-sme]'s end and is 0% completed
+[Dev feed back] as [dev-feedback] lasts 3 days and starts after [review-projects]'s end and is 0% completed
+[Dev Stage Completed] happens at [dev-feedback]'s end
+
+-- Platform Adoption Stage --
+[Write Blog] as [write-blog] lasts 7 days and starts at [dev-feedback]'s end and is 0% completed
+[Present talks] as [present-talks] lasts 3 day and starts at [write-blog]'s end and is 0% completed
+[Rollout to all Orgs] as [initiate-all-org] lasts 62 days and starts at [present-talks]'s end and is 0% completed
+[Adoption feedback] as [full-rollout-feedback] lasts 3 days and starts after [initiate-all-org]'s end and is 0% completed
+[Adoption Stage Completed] happens at [full-rollout-feedback]'s end
+@endgantt
