@@ -6,7 +6,7 @@ RUN apk update && apk upgrade && \
 RUN apk add --no-cache ca-certificates
 RUN mkdir /app
 WORKDIR /app
-COPY ./docker-infrastructure-api-server /app/docker-infrastructure-api-server
-RUN chmod +x /app/docker-infrastructure-api-server
+COPY ./infrastructure-api-server /app/infrastructure-api-server
+RUN chmod +x /app/infrastructure-api-server
 EXPOSE 3000
 CMD ["/app/infrastructure-api-server"]
