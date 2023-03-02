@@ -5,6 +5,7 @@ nav:
   - Introduction: index.md
   - SidePage: sidepage.md
   - HLD: HighLevelDocument.md
+  - DesignReview: DesignReview.md
 
 # Theme
 theme:
